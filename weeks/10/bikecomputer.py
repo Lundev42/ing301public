@@ -40,6 +40,7 @@ class Route:
             fil.write(f"{p.timestamp},{p.latitude},{p.longitude}\n")
         fil.close()
         print("Written to route.csv!")
+        
         # skrive til JSON
         fil = open('route.json', "w+")
         json_points = []
@@ -51,11 +52,13 @@ class Route:
         json.dump(json_objekt, fil, indent=3)
         fil.close()
         print("Written to route.json")
+        
         # Write pickle
         fil = open('route.picke', "wb")
         pickle.dump(self, fil)
         fil.close()
         print("Written to route.pickle")
+        
         # Write to sqlite
         connection = sqlite3.Connection("route.sqlite")
         cursor = connection.cursor()
